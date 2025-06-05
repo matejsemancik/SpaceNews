@@ -52,7 +52,6 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
             // kx
@@ -81,6 +80,10 @@ kotlin {
             // database
             implementation(libs.androidx.room.runtime)
             implementation(libs.androidx.sqlite.bundled)
+
+            // decompose
+            implementation(libs.decompose.core)
+            implementation(libs.decompose.extensionsCompose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

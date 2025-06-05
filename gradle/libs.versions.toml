@@ -16,6 +16,7 @@ androidx-sqlite = "2.5.1"
 coil = "3.2.0"
 composeMultiplatform = "1.8.1"
 dataStore = "1.1.7"
+decompose = "3.3.0"
 junit = "4.13.2"
 koin = "4.1.0-RC1"
 kotlin = "2.1.21"
@@ -39,7 +40,6 @@ androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", vers
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
-androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 androidx-datastore = { module = "androidx.datastore:datastore-preferences-core", version.ref = "dataStore" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
@@ -67,6 +67,10 @@ ktor-engine-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 # Image loading
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
+
+# Navigation
+decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+decompose-extensionsCompose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

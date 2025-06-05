@@ -37,6 +37,12 @@ android {
 
 dependencies {
     implementation(projects.shared)
+
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.runtimeCompose)
+    implementation(compose.material3)
+
+    implementation(libs.decompose.core)
+    implementation(libs.decompose.extensionsCompose)
 }
 
