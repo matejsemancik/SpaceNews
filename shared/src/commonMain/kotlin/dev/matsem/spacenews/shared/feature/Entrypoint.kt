@@ -1,4 +1,4 @@
-package dev.matsem.spacenews.shared
+package dev.matsem.spacenews.shared.feature
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -16,12 +16,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import dev.matsem.spacenews.shared.Greeting
 import org.jetbrains.compose.resources.painterResource
 import spacenews.shared.generated.resources.Res
 import spacenews.shared.generated.resources.compose_multiplatform
 
 @Composable
-fun App() {
+fun Entrypoint() {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
         Column(
