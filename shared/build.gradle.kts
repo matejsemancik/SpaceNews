@@ -92,9 +92,13 @@ kotlin {
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
         }
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+        }
         iosMain.dependencies {
             api(libs.decompose.core)
             api(libs.essenty)
+            implementation(libs.ktor.client.darwin)
         }
     }
 }

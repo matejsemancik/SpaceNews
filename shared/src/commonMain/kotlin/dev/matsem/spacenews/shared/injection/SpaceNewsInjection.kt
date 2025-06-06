@@ -11,7 +11,11 @@ internal object SpaceNewsInjection {
                 appDeclaration()
             }
 
-            modules(componentModule())
+            modules(
+                componentModule(),
+                networkModule(),
+                repositoryModule(),
+            )
         }
     }
 }
