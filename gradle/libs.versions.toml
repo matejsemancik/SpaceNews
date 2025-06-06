@@ -17,6 +17,7 @@ coil = "3.2.0"
 composeMultiplatform = "1.8.1"
 dataStore = "1.1.7"
 decompose = "3.3.0"
+essenty = "2.5.0"
 junit = "4.13.2"
 koin = "4.1.0-RC1"
 kotlin = "2.1.21"
@@ -55,6 +56,7 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-compose = { module = "io.insert-koin:koin-compose" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 
 # Networking
 ktorfit-lib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" }
@@ -68,9 +70,10 @@ ktor-engine-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 
-# Navigation
+# Decompose
 decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-extensionsCompose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
+essenty = {  module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

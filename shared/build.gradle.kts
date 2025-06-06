@@ -41,6 +41,9 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "SpaceNewsKit"
             isStatic = true
+
+            export(libs.decompose.core)
+            export(libs.essenty)
         }
     }
 
@@ -88,6 +91,10 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
+        }
+        iosMain.dependencies {
+            api(libs.decompose.core)
+            api(libs.essenty)
         }
     }
 }

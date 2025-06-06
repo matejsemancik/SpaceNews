@@ -44,5 +44,6 @@ dependencies {
 
     implementation(libs.decompose.core)
     implementation(libs.decompose.extensionsCompose)
+    implementation(libs.koin.android)
 }
 

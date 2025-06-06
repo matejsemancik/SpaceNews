@@ -38,8 +38,8 @@ fun RootNavHostUi(
             ),
         ) { child ->
             when (val instance = child.instance) {
-                RootChild.Home -> Surface(Modifier.fillMaxSize()) { Text("Home") }
-                RootChild.ArticleDetail -> Surface(Modifier.fillMaxSize()) { Text("ArticleDetail") }
+                is RootChild.Home -> Surface(Modifier.fillMaxSize()) { Text("Home") }
+                is RootChild.ArticleDetail -> Surface(Modifier.fillMaxSize()) { Text("ArticleDetail") }
             }
         }
     }

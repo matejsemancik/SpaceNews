@@ -2,14 +2,14 @@ package dev.matsem.spacenews.shared.navigation.root
 
 import com.arkivanov.decompose.Child
 import com.arkivanov.decompose.router.stack.ChildStack
-import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.navigate
 import com.arkivanov.decompose.router.stack.pop
 import dev.matsem.spacenews.shared.arch.AppComponentContext
 import dev.matsem.spacenews.shared.arch.BaseComponent
 import dev.matsem.spacenews.shared.arch.asStateFlow
-import dev.matsem.spacenews.shared.data.repo.model.ArticleId
+import dev.matsem.spacenews.shared.feature.articleDetail.presentation.ArticleDetailScreenFactory
+import dev.matsem.spacenews.shared.feature.home.presentation.HomeScreenFactory
 import kotlinx.coroutines.flow.StateFlow
 
 internal class RootNavHostComponent(componentContext: AppComponentContext) : BaseComponent<RootNavHostState, Nothing>(
@@ -17,17 +17,22 @@ internal class RootNavHostComponent(componentContext: AppComponentContext) : Bas
     defaultState = RootNavHostState,
 ), RootNavHost {
 
-    private val navigator = StackNavigation<RootDestination>()
+    private val navigator = RootNavigator()
 
     override val childStack: StateFlow<ChildStack<RootDestination, RootChild>> = childStack(
         source = navigator,
         serializer = RootDestination.serializer(),
-        initialStack = { listOf(RootDestination.Home, RootDestination.ArticleDetail(ArticleId(0))) },
+        initialStack = { listOf(RootDestination.Home) },
         handleBackButton = true,
     ) { destination, childContext ->
         when (destination) {
-            is RootDestination.ArticleDetail -> RootChild.ArticleDetail
-            RootDestination.Home -> RootChild.Home
+            is RootDestination.ArticleDetail -> RootChild.ArticleDetail(
+                screen = ArticleDetailScreenFactory.create(componentContext = childContext, navigation = navigator),
+            )
+
+            RootDestination.Home -> RootChild.Home(
+                screen = HomeScreenFactory.create(componentContext = childContext, navigation = navigator),
+            )
         }
     }.asStateFlow()
 
