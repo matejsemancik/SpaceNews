@@ -1,13 +1,13 @@
 # SpaceNews
 
-A Kotlin Multiplatform mobile application that fetches and displays content from the [Spaceflight News API](https://api.spaceflightnewsapi.net/v4/docs/#/articles/articles_list).
+A Kotlin Multiplatform application that fetches and displays content from the [Spaceflight News API](https://api.spaceflightnewsapi.net/v4/docs/#/articles/articles_list).
 Also my playground to test new things.
 
 ## Tech Stack
 - **UI Layer**
   - Compose Multiplatform for shared UI components
-  - Native screen presentation on iOS for optimal performance
-  - Decompose for navigation and screen management
+  - Native screen presentation on iOS for optimal performance and UX
+  - Decompose for navigation, lifecycle and state management
 
 - **Architecture**
   - MVI-like architecture with clear separation of concerns
@@ -24,4 +24,4 @@ Also my playground to test new things.
 
 
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)
