@@ -19,19 +19,18 @@ fun SpaceNewsTheme(
     dimensions: SpaceNewsDimensions = mobileSpaceNewsDimensions(),
     content: @Composable () -> Unit,
 ) {
-    CompositionLocalProvider(LocalStackAnimationProvider provides SpaceNewsStackAnimationProvider) {
-        MaterialTheme(
-            colorScheme = if (isDark) {
-                darkColorScheme()
-            } else {
-                lightColorScheme()
-            },
+    MaterialTheme(
+        colorScheme = if (isDark) {
+            darkColorScheme()
+        } else {
+            lightColorScheme()
+        },
+    ) {
+        CompositionLocalProvider(
+            LocalSpaceNewsDimensions provides dimensions,
+            LocalStackAnimationProvider provides SpaceNewsStackAnimationProvider,
         ) {
-            CompositionLocalProvider(
-                LocalSpaceNewsDimensions provides dimensions,
-            ) {
-                content()
-            }
+            content()
         }
     }
 }
