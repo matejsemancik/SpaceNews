@@ -5,9 +5,9 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.navigate
 import com.arkivanov.decompose.router.stack.pop
-import dev.matsem.spacenews.shared.arch.AppComponentContext
-import dev.matsem.spacenews.shared.arch.BaseComponent
-import dev.matsem.spacenews.shared.arch.asStateFlow
+import dev.matsem.spacenews.shared.arch.presentation.AppComponentContext
+import dev.matsem.spacenews.shared.arch.presentation.BaseComponent
+import dev.matsem.spacenews.shared.arch.presentation.asStateFlow
 import dev.matsem.spacenews.shared.feature.articleDetail.presentation.ArticleDetailScreenFactory
 import dev.matsem.spacenews.shared.feature.home.presentation.HomeScreenFactory
 import kotlinx.coroutines.flow.StateFlow

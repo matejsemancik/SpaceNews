@@ -15,6 +15,7 @@ internal object SpaceNewsInjection {
                 componentModule(),
                 networkModule(),
                 repositoryModule(),
+                useCaseModule(),
             )
         }
     }

@@ -1,6 +1,7 @@
 package dev.matsem.spacenews.shared.data.service
 
 import de.jensklingenberg.ktorfit.http.GET
+import de.jensklingenberg.ktorfit.http.Path
 import de.jensklingenberg.ktorfit.http.Query
 import de.jensklingenberg.ktorfit.http.Url
 import dev.matsem.spacenews.shared.data.service.model.ArticleResponse
@@ -18,4 +19,9 @@ internal interface NewsApi {
     suspend fun getArticles(
         @Url url: String,
     ): PagedListResponse<ArticleResponse>
+
+    @GET("articles/{id}")
+    suspend fun getArticle(
+        @Path("id") id: Int,
+    ): ArticleResponse
 }

@@ -9,7 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.retainedComponent
-import dev.matsem.spacenews.shared.arch.defaultAppComponentContext
+import dev.matsem.spacenews.shared.arch.presentation.defaultAppComponentContext
 import dev.matsem.spacenews.shared.design.theme.SpaceNewsTheme
 import dev.matsem.spacenews.shared.navigation.root.RootNavHost
 import dev.matsem.spacenews.shared.navigation.root.RootNavHostFactory

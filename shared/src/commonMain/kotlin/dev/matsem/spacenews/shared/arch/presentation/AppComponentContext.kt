@@ -1,4 +1,4 @@
-package dev.matsem.spacenews.shared.arch
+package dev.matsem.spacenews.shared.arch.presentation
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ComponentContextFactory
@@ -9,7 +9,7 @@ import com.arkivanov.essenty.lifecycle.LifecycleOwner
 import com.arkivanov.essenty.statekeeper.StateKeeperOwner
 
 /**
- * App-specific [com.arkivanov.decompose.ComponentContext] which can be decorated with custom functionality in the future should it
+ * App-specific [ComponentContext] which can be decorated with custom functionality in the future should it
  * be required.
  */
 interface AppComponentContext : GenericComponentContext<AppComponentContext> {

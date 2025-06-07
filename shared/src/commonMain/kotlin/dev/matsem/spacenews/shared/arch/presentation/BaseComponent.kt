@@ -1,6 +1,8 @@
-package dev.matsem.spacenews.shared.arch
+package dev.matsem.spacenews.shared.arch.presentation
 
 import com.arkivanov.essenty.lifecycle.doOnDestroy
+import dev.matsem.spacenews.shared.arch.useCase.UseCaseExecutionScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
@@ -22,7 +24,8 @@ import kotlinx.coroutines.launch
  * @param defaultState The default state of the component.
  */
 abstract class BaseComponent<VS : Any, E : Any>(componentContext: AppComponentContext, private val defaultState: VS) :
-    AppComponentContext by componentContext {
+    AppComponentContext by componentContext,
+    UseCaseExecutionScope {
 
     /**
      * An internal state of the component of type [VS].
@@ -78,6 +81,13 @@ abstract class BaseComponent<VS : Any, E : Any>(componentContext: AppComponentCo
             uiEventChannel.send(event)
         }
     }
+
+    // endregion
+
+    // region UseCaseExecutionScope
+
+    override val useCaseCoroutineScope: CoroutineScope
+        get() = componentCoroutineScope
 
     // endregion
 }

@@ -23,12 +23,8 @@ struct RootNavigationView: View {
         ) { child in
             switch onEnum(of: child) {
             case .home(let instance):
-                VStack {
-                    Text("Home: \(instance.screen)")
-                    Button("Go to Detail") {
-                        instance.screen.actions.onArticleClick(id: 0)
-                    }
-                }.navigationTitle("Home")
+                HomeScreenView(instance.screen)
+                    .ignoresSafeArea()
             case .articleDetail(let instance):
                 Text("ArticleDetail: \(instance.screen)")
                     .navigationTitle("Detail")

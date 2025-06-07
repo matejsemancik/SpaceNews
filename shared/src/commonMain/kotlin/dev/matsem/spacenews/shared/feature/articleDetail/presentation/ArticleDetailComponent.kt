@@ -1,7 +1,7 @@
 package dev.matsem.spacenews.shared.feature.articleDetail.presentation
 
-import dev.matsem.spacenews.shared.arch.AppComponentContext
-import dev.matsem.spacenews.shared.arch.BaseComponent
+import dev.matsem.spacenews.shared.arch.presentation.AppComponentContext
+import dev.matsem.spacenews.shared.arch.presentation.BaseComponent
 import kotlinx.coroutines.flow.StateFlow
 import org.koin.core.annotation.InjectedParam
 

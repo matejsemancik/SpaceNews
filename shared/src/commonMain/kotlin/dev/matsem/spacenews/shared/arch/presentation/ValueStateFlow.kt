@@ -1,4 +1,4 @@
-package dev.matsem.spacenews.shared.arch
+package dev.matsem.spacenews.shared.arch.presentation
 
 import com.arkivanov.decompose.value.Value
 import kotlinx.coroutines.ExperimentalForInheritanceCoroutinesApi
