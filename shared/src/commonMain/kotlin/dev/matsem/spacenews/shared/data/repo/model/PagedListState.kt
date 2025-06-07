@@ -65,3 +65,27 @@ inline fun <reified T : Any> PagedListState<T>.error(error: Throwable): PagedLis
     isLoading = false,
     error = error,
 )
+
+/**
+ * Creates a mock [PagedListState] for testing purposes.
+ *
+ * This function creates a [PagedListState] with predefined values, useful for testing and previews.
+ *
+ * @param data The list of items to include in the state
+ * @param hasReachedEnd Whether the list has reached its end (default: false)
+ * @param isLoading Whether the list is currently loading (default: false)
+ * @param error Any error that occurred (default: null)
+ * @return A [PagedListState] with the specified mock values
+ */
+inline fun <reified T : Any> mockPagedListState(
+    data: List<T>,
+    hasReachedEnd: Boolean = false,
+    isLoading: Boolean = false,
+    error: Throwable? = null,
+) = PagedListState(
+    nextPage = null,
+    hasReachedEnd = hasReachedEnd,
+    data = data,
+    error = error,
+    isLoading = isLoading,
+)

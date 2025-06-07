@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.androidx.room)
     alias(libs.plugins.skie)
+    alias(libs.plugins.moko.resources)
 }
 
 android {
@@ -53,7 +54,6 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.material3)
             implementation(compose.materialIconsExtended)
-            implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
@@ -87,6 +87,10 @@ kotlin {
             // decompose
             implementation(libs.decompose.core)
             implementation(libs.decompose.extensionsCompose)
+
+            // MOKO
+            implementation(libs.moko.resources)
+            implementation(libs.moko.resources.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -94,6 +98,7 @@ kotlin {
         }
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)
+            implementation(compose.uiTooling)
         }
         iosMain.dependencies {
             api(libs.decompose.core)
@@ -113,4 +118,10 @@ dependencies {
 
 room {
     schemaDirectory(project.layout.projectDirectory.dir("room-schemas"))
+}
+
+multiplatformResources {
+    resourcesPackage.set("dev.matsem.spacenews.resources")
+    resourcesClassName.set("MR")
+    iosBaseLocalizationRegion.set("en")
 }

@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(compose.material3)
+    implementation(compose.uiTooling)
 
     implementation(libs.decompose.core)
     implementation(libs.decompose.extensionsCompose)

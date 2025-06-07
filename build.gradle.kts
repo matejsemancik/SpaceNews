@@ -12,4 +12,5 @@ plugins {
     alias(libs.plugins.skie) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.androidx.room) apply false
+    alias(libs.plugins.moko.resources) apply false
 }

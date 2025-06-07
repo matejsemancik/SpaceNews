@@ -4,9 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.retainedComponent
 import dev.matsem.spacenews.shared.arch.presentation.defaultAppComponentContext
@@ -26,8 +28,11 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
+            LaunchedEffect(isSystemInDarkTheme()) {
+                enableEdgeToEdge()
+            }
             SpaceNewsTheme {
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                Surface(modifier = Modifier.fillMaxSize(), color = SpaceNewsTheme.colorScheme.background) {
                     RootNavHostUi(rootNavHost)
                 }
             }

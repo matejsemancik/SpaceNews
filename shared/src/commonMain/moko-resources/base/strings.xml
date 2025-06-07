@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title">SpaceNews 🚀📡</string>
+
+    <string name="error_generic_title">Oops…</string>
+    <string name="error_generic_message">Something went wrong. Maybe try again?</string>
+    <string name="error_connection_title">No internet 🛜</string>
+    <string name="error_connection_message">Go online and try again.</string>
+</resources>
