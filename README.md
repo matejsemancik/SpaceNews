@@ -17,7 +17,7 @@ Also my playground to test new things.
 
 - **Cross-Platform**
   - Kotlin Multiplatform for shared business logic
-  - MOKO Resources for shared string resources
+  - MOKO Resources for shared string resources + custom date formatting
   - Ktor for networking
   - Kotlinx Serialization for JSON parsing
 
