@@ -1,14 +1,27 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# SpaceNews
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+A Kotlin Multiplatform mobile application that fetches and displays content from the [Spaceflight News API](https://api.spaceflightnewsapi.net/v4/docs/#/articles/articles_list).
+Also my playground to test new things.
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## Tech Stack
+- **UI Layer**
+  - Compose Multiplatform for shared UI components
+  - Native screen presentation on iOS for optimal performance
+  - Decompose for navigation and screen management
+
+- **Architecture**
+  - MVI-like architecture with clear separation of concerns
+  - UseCase pattern for business logic
+  - Repository pattern for data management
+  - Flow-based reactive programming
+
+- **Cross-Platform**
+  - Kotlin Multiplatform for shared business logic
+  - MOKO Resources for shared string resources
+  - Ktor for networking
+  - Kotlinx Serialization for JSON parsing
+
+
 
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
