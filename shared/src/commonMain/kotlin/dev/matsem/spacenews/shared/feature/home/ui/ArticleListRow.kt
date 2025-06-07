@@ -23,7 +23,7 @@ import dev.matsem.spacenews.shared.feature.home.model.toArticleListItem
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ArticleListItemRow(
+fun ArticleListRow(
     article: ArticleListItem,
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
@@ -60,6 +60,6 @@ fun ArticleListItemRow(
 @Preview
 private fun ArticleListItemRowPreview() {
     Showcase {
-        ArticleListItemRow(article = Article.mocks().first().toArticleListItem(), Modifier.fillMaxWidth(), onClick = {})
+        ArticleListRow(article = Article.mocks().first().toArticleListItem(), Modifier.fillMaxWidth(), onClick = {})
     }
 }

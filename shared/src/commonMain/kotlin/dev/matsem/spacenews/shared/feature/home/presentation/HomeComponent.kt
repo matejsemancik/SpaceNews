@@ -1,6 +1,5 @@
 package dev.matsem.spacenews.shared.feature.home.presentation
 
-import com.arkivanov.essenty.lifecycle.doOnCreate
 import dev.matsem.spacenews.shared.arch.presentation.AppComponentContext
 import dev.matsem.spacenews.shared.arch.presentation.BaseComponent
 import dev.matsem.spacenews.shared.data.repo.model.ArticleId
@@ -24,13 +23,18 @@ internal class HomeComponent(
     override val actions: HomeScreen.Actions = object : HomeScreen.Actions {
 
         override fun onArticleClick(id: ArticleId) = navigateToArticleDetail(id)
-        override fun onFetchMore() = fetchArticles()
+        override fun onFetchMore() = fetchMore()
+        override fun onFooterRetryClick() = fetchArticles()
     }
 
-    init {
-        doOnCreate {
-            fetchArticles()
+    private fun fetchMore() {
+        if (componentState.value.articlePagedListState.error != null) {
+            return
         }
+        if (fetchArticlesCase.job?.isActive == true) {
+            return
+        }
+        fetchArticles()
     }
 
     private fun fetchArticles() {

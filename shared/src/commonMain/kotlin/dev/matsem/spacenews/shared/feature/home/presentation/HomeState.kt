@@ -10,7 +10,7 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 
 data class HomeState(
-    internal val articlePagedListState: ArticlePagedListState = initialPagedListState<Article>(initialPageSize = 20),
+    internal val articlePagedListState: ArticlePagedListState = initialPagedListState<Article>(pageSize = 20),
 ) {
     val articles: ImmutableList<ArticleListItem>
         get() = articlePagedListState.data.map { it.toArticleListItem() }.toImmutableList()

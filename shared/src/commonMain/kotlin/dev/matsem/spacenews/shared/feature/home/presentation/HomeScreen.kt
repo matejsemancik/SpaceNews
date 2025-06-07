@@ -11,11 +11,13 @@ interface HomeScreen {
     interface Actions {
         fun onArticleClick(id: ArticleId)
         fun onFetchMore()
+        fun onFooterRetryClick()
 
         companion object {
             fun noOp() = object : Actions {
                 override fun onArticleClick(id: ArticleId) = Unit
                 override fun onFetchMore() = Unit
+                override fun onFooterRetryClick() = Unit
             }
         }
     }

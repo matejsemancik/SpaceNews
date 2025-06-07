@@ -7,15 +7,13 @@ package dev.matsem.spacenews.shared.data.repo.model
  * to manage the state of a list that loads its data in chunks or pages.
  *
  * @param T The type of data items in the list. Must be non-nullable.
- * @property nextPage The pointer to fetch the next page of data. `null` if there is no next page or if the initial page hasn't loaded yet.
- * @property hasReachedEnd `true` if all pages have been loaded, `false` otherwise.
+ * @property nextPage The pointer to fetch the next page of data. `null` if the list has reached its end.
  * @property data The currently loaded list of data items.
  * @property error An optional [Throwable] representing an error that occurred during data loading. `null` if no error has occurred.
  * @property isLoading `true` if data is currently being loaded, `false` otherwise.
  */
 data class PagedListState<T : Any>(
     val nextPage: NextPagePointer?,
-    val hasReachedEnd: Boolean,
     val data: List<T>,
     val error: Throwable?,
     val isLoading: Boolean,
@@ -37,11 +35,10 @@ sealed interface NextPagePointer {
 /**
  * Creates an initial [PagedListState] for initial loading.
  *
- * @param initialPageSize initial page size.
+ * @param pageSize initial page size.
  */
-inline fun <reified T : Any> initialPagedListState(initialPageSize: Int): PagedListState<T> = PagedListState(
-    nextPage = NextPagePointer.LimitOffset(limit = initialPageSize, offset = 0),
-    hasReachedEnd = false,
+inline fun <reified T : Any> initialPagedListState(pageSize: Int): PagedListState<T> = PagedListState(
+    nextPage = NextPagePointer.LimitOffset(limit = pageSize, offset = 0),
     data = emptyList(),
     error = null,
     isLoading = false,
@@ -84,7 +81,6 @@ inline fun <reified T : Any> mockPagedListState(
     error: Throwable? = null,
 ) = PagedListState(
     nextPage = null,
-    hasReachedEnd = hasReachedEnd,
     data = data,
     error = error,
     isLoading = isLoading,
