@@ -8,4 +8,6 @@
     <string name="error_generic_message">Something went wrong. Maybe try again?</string>
     <string name="error_connection_title">No internet 🥺📡</string>
     <string name="error_connection_message">Go online and try again.</string>
+
+    <string name="article_detail_cta">Read on %1$s</string>
 </resources>

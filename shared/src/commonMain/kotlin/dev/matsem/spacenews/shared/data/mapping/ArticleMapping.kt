@@ -15,6 +15,7 @@ internal object ArticleMapping {
         imageUrl = imageUrl,
         summary = summary,
         publishedAt = publishedAt,
+        newsSiteName = newsSiteName,
     )
 
     fun ArticleEntity.toDomainModel() = Article(
@@ -25,6 +26,7 @@ internal object ArticleMapping {
         imageUrl = imageUrl,
         summary = summary,
         publishedAt = publishedAt,
+        newsSiteName = newsSiteName,
     )
 
     fun ArticleResponse.toDbModel() = ArticleEntity(
@@ -35,15 +37,6 @@ internal object ArticleMapping {
         imageUrl = imageUrl,
         summary = summary,
         publishedAt = publishedAt,
-    )
-
-    fun Article.toDbModel() = ArticleEntity(
-        id = id.id,
-        title = title,
-        authors = authors,
-        url = url,
-        imageUrl = imageUrl,
-        summary = summary,
-        publishedAt = publishedAt,
+        newsSiteName = newsSiteName,
     )
 }

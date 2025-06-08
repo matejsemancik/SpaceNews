@@ -104,7 +104,7 @@ private fun Content(
                         .padding(horizontal = SpaceNewsTheme.dimensions.horizontalContentPadding, vertical = Grid.d4)
                         .navigationBarsPadding(),
                 ) {
-                    Text(text = "Read online")
+                    Text(text = article.ctaButtonText.localized())
                 }
             }
         },

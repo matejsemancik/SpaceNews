@@ -27,4 +27,7 @@ data class ArticleResponse(
 
     @SerialName("published_at")
     val publishedAt: Instant,
+
+    @SerialName("news_site")
+    val newsSiteName: String
 )

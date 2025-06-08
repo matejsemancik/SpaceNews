@@ -10,6 +10,7 @@ data class Article(
     val imageUrl: String,
     val summary: String,
     val publishedAt: Instant,
+    val newsSiteName: String,
 ) {
     companion object {
         fun mocks(): List<Article> {
@@ -60,7 +61,8 @@ data class Article(
                     url = "https://spacenews.com/article-${index}",
                     imageUrl = "https://spacenews.com/images/article-${index}.jpg",
                     summary = sampleSummaries[index - 1],
-                    publishedAt = Instant.fromEpochSeconds(1704067200L + (index * 86400L)) // Starting from 2024-01-01, each article one day apart
+                    publishedAt = Instant.fromEpochSeconds(1704067200L + (index * 86400L)), // Starting from 2024-01-01, each article one day apart
+                    newsSiteName = "NASA"
                 )
             }
         }

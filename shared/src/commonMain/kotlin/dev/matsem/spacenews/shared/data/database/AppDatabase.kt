@@ -11,7 +11,7 @@ import dev.matsem.spacenews.shared.data.database.typeConverters.JsonTypeConverte
 
 @Database(
     entities = [ArticleEntity::class],
-    version = 1,
+    version = 2,
 )
 @TypeConverters(JsonTypeConverters::class)
 @ConstructedBy(AppDatabaseConstructor::class)

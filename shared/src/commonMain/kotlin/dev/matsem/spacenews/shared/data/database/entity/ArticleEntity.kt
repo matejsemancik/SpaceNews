@@ -29,4 +29,7 @@ internal data class ArticleEntity(
 
     @ColumnInfo(name = "published_at")
     val publishedAt: Instant,
+
+    @ColumnInfo("news_site")
+    val newsSiteName: String
 )
