@@ -10,9 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import coil3.compose.AsyncImage
 import dev.icerock.moko.resources.compose.localized
+import dev.matsem.spacenews.shared.design.image.NetworkImage
 import dev.matsem.spacenews.shared.design.layout.HorizontalSpacer
 import dev.matsem.spacenews.shared.design.theme.Grid
 import dev.matsem.spacenews.shared.design.theme.SpaceNewsTheme
@@ -32,10 +33,12 @@ fun ArticleListRow(
             .padding(horizontal = SpaceNewsTheme.dimensions.horizontalContentPadding, vertical = Grid.d3),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        AsyncImage(
-            model = article.thumbnailUrl,
+        NetworkImage(
+            url = article.thumbnailUrl,
             contentDescription = null,
-            modifier = Modifier.size(width = Grid.d22, height = Grid.d16),
+            modifier = Modifier
+                .size(width = Grid.d22, height = Grid.d16)
+                .clip(SpaceNewsTheme.shapes.small),
             contentScale = ContentScale.Crop,
         )
         HorizontalSpacer(Grid.d4)

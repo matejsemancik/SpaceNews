@@ -16,6 +16,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil3.ImageLoader
+import coil3.compose.LocalPlatformContext
+import coil3.compose.setSingletonImageLoaderFactory
+import coil3.memory.MemoryCache
+import coil3.util.DebugLogger
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.materials.ExperimentalHazeMaterialsApi
 import dev.chrisbanes.haze.rememberHazeState
@@ -38,6 +43,20 @@ fun HomeScreenUi(
     val actions = homeScreen.actions
 
     Content(state, actions, modifier)
+
+    // This is first common Composable entrypoint displayed in both apps,
+    // thus we initialise ImageLoader factory here
+    val coilPlatformContext = LocalPlatformContext.current
+    setSingletonImageLoaderFactory { context ->
+        ImageLoader.Builder(context)
+            .logger(DebugLogger())
+            .memoryCache {
+                MemoryCache.Builder()
+                    .maxSizePercent(coilPlatformContext, percent = 0.2)
+                    .build()
+            }
+            .build()
+    }
 }
 
 @OptIn(ExperimentalHazeMaterialsApi::class)

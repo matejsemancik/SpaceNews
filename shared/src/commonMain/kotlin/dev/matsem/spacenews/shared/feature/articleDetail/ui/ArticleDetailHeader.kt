@@ -22,6 +22,7 @@ import dev.chrisbanes.haze.materials.ExperimentalHazeMaterialsApi
 import dev.chrisbanes.haze.materials.HazeMaterials
 import dev.chrisbanes.haze.rememberHazeState
 import dev.icerock.moko.resources.compose.localized
+import dev.matsem.spacenews.shared.design.image.NetworkImage
 import dev.matsem.spacenews.shared.design.layout.VerticalSpacer
 import dev.matsem.spacenews.shared.design.theme.Grid
 import dev.matsem.spacenews.shared.design.theme.SpaceNewsTheme
@@ -36,8 +37,8 @@ fun ArticleDetailHeader(
     val hazeState = rememberHazeState()
 
     Box(modifier) {
-        AsyncImage(
-            model = article.imageUrl,
+        NetworkImage(
+            url = article.imageUrl,
             contentDescription = null,
             modifier = Modifier
                 .fillMaxSize()
