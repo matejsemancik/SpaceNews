@@ -31,7 +31,7 @@ sealed interface RootDestination {
     @OptIn(ExperimentalUuidApi::class)
     @Serializable
     data class ArticleDetail(
-        val id: ArticleId,
+        val articleId: ArticleId,
 
         /*
         Random UUID ensures uniqueness of navigation entries on child stack. This allows stack to contain multiple instances of the same ArticleDetail.

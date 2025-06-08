@@ -9,10 +9,12 @@ interface ArticleDetailScreen {
 
     interface Actions {
         fun onBack()
+        fun onRetryClick()
 
         companion object {
             fun noOp() = object : Actions {
                 override fun onBack() = Unit
+                override fun onRetryClick() = Unit
             }
         }
     }

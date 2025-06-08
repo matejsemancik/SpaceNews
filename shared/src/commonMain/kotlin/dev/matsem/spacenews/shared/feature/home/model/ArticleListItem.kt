@@ -11,9 +11,13 @@ data class ArticleListItem(
     val date: StringDesc,
     val title: StringDesc,
     val thumbnailUrl: String,
-)
+) {
+    companion object {
+        fun mocks() = Article.mocks().map { it.toUiListItem() }
+    }
+}
 
-fun Article.toArticleListItem() = ArticleListItem(
+internal fun Article.toUiListItem() = ArticleListItem(
     id = id,
     date = publishedAt.desc("MMMd HHmm zzz"),
     title = title.desc(),

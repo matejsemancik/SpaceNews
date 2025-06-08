@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.compose.stringResource
 import dev.matsem.spacenews.resources.MR
-import dev.matsem.spacenews.shared.arch.errors.UiError
+import dev.matsem.spacenews.shared.arch.state.UiError
 import dev.matsem.spacenews.shared.design.layout.VerticalSpacer
 import dev.matsem.spacenews.shared.design.theme.Grid
 import dev.matsem.spacenews.shared.design.theme.SpaceNewsTheme

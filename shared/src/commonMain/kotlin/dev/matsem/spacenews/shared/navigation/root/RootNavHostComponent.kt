@@ -27,11 +27,18 @@ internal class RootNavHostComponent(componentContext: AppComponentContext) : Bas
     ) { destination, childContext ->
         when (destination) {
             is RootDestination.ArticleDetail -> RootChild.ArticleDetail(
-                screen = ArticleDetailScreenFactory.create(componentContext = childContext, navigation = navigator),
+                screen = ArticleDetailScreenFactory.create(
+                    componentContext = childContext,
+                    navigation = navigator,
+                    articleId = destination.articleId,
+                ),
             )
 
             RootDestination.Home -> RootChild.Home(
-                screen = HomeScreenFactory.create(componentContext = childContext, navigation = navigator),
+                screen = HomeScreenFactory.create(
+                    componentContext = childContext,
+                    navigation = navigator,
+                ),
             )
         }
     }.asStateFlow()

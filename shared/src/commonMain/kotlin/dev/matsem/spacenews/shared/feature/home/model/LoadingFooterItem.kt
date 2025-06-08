@@ -1,7 +1,7 @@
 package dev.matsem.spacenews.shared.feature.home.model
 
-import dev.matsem.spacenews.shared.arch.errors.UiError
-import dev.matsem.spacenews.shared.arch.errors.toUiError
+import dev.matsem.spacenews.shared.arch.state.UiError
+import dev.matsem.spacenews.shared.arch.state.toUiError
 
 interface LoadingFooterItem {
     data object Loading : LoadingFooterItem

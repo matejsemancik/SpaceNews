@@ -3,7 +3,7 @@ package dev.matsem.spacenews.shared.feature.home.presentation
 import dev.matsem.spacenews.shared.arch.presentation.AppComponentContext
 import dev.matsem.spacenews.shared.arch.presentation.BaseComponent
 import dev.matsem.spacenews.shared.data.repo.model.ArticleId
-import dev.matsem.spacenews.shared.domain.FetchArticlesCase
+import dev.matsem.spacenews.shared.domain.FetchPagedArticlesCase
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import org.koin.core.annotation.InjectedParam
@@ -11,7 +11,7 @@ import org.koin.core.annotation.InjectedParam
 internal class HomeComponent(
     @InjectedParam componentContext: AppComponentContext,
     @InjectedParam private val navigation: HomeNavigation,
-    private val fetchArticlesCase: FetchArticlesCase,
+    private val fetchArticlesCase: FetchPagedArticlesCase,
 ) :
     BaseComponent<HomeState, Nothing>(componentContext, HomeState()),
     HomeScreen,

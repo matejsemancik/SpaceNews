@@ -51,6 +51,7 @@ inline fun <reified T : Any> initialPagedListState(pageSize: Int): PagedListStat
  */
 inline fun <reified T : Any> PagedListState<T>.loading(): PagedListState<T> = copy(
     isLoading = true,
+    error = null,
 )
 
 /**

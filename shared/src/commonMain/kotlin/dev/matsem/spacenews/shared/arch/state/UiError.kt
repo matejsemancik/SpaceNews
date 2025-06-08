@@ -1,4 +1,4 @@
-package dev.matsem.spacenews.shared.arch.errors
+package dev.matsem.spacenews.shared.arch.state
 
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc

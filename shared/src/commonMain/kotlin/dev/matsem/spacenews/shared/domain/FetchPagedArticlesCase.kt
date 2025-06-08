@@ -5,7 +5,7 @@ import dev.matsem.spacenews.shared.data.repo.ArticleRepo
 import dev.matsem.spacenews.shared.data.repo.model.ArticlePagedListState
 import kotlinx.coroutines.flow.Flow
 
-internal class FetchArticlesCase(
+internal class FetchPagedArticlesCase(
     private val articleRepo: ArticleRepo,
 ) : FlowUseCase<ArticlePagedListState, ArticlePagedListState>() {
 

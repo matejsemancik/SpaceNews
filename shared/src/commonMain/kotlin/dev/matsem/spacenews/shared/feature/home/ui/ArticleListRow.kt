@@ -13,13 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import coil3.compose.AsyncImage
 import dev.icerock.moko.resources.compose.localized
-import dev.matsem.spacenews.shared.data.repo.model.Article
 import dev.matsem.spacenews.shared.design.layout.HorizontalSpacer
 import dev.matsem.spacenews.shared.design.theme.Grid
 import dev.matsem.spacenews.shared.design.theme.SpaceNewsTheme
 import dev.matsem.spacenews.shared.design.tooling.Showcase
 import dev.matsem.spacenews.shared.feature.home.model.ArticleListItem
-import dev.matsem.spacenews.shared.feature.home.model.toArticleListItem
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -60,6 +58,6 @@ fun ArticleListRow(
 @Preview
 private fun ArticleListItemRowPreview() {
     Showcase {
-        ArticleListRow(article = Article.mocks().first().toArticleListItem(), Modifier.fillMaxWidth(), onClick = {})
+        ArticleListRow(article = ArticleListItem.mocks().first(), Modifier.fillMaxWidth(), onClick = {})
     }
 }
