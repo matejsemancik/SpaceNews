@@ -9,6 +9,8 @@ data class ArticleDetail(
     val title: StringDesc,
     val date: StringDesc,
     val imageUrl: String,
+    val summary: String,
+    val url: String,
 ) {
     companion object {
         fun mocks() = Article.mocks().map { it.toUiDetail() }
@@ -19,4 +21,6 @@ fun Article.toUiDetail() = ArticleDetail(
     title = title.desc(),
     date = publishedAt.desc("MMMd HHmm zzz"),
     imageUrl = imageUrl,
+    summary = summary,
+    url = url
 )
