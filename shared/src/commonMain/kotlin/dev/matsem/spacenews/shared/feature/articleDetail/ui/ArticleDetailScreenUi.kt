@@ -1,14 +1,15 @@
 package dev.matsem.spacenews.shared.feature.articleDetail.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -24,15 +25,16 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.IntSize
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import coil3.compose.AsyncImage
 import dev.chrisbanes.haze.HazeProgressive
 import dev.chrisbanes.haze.hazeEffect
 import dev.chrisbanes.haze.hazeSource
@@ -42,7 +44,6 @@ import dev.chrisbanes.haze.rememberHazeState
 import dev.icerock.moko.resources.compose.localized
 import dev.matsem.spacenews.shared.arch.state.LoadingState
 import dev.matsem.spacenews.shared.design.layout.DefaultStateLayout
-import dev.matsem.spacenews.shared.design.layout.VerticalSpacer
 import dev.matsem.spacenews.shared.design.theme.Grid
 import dev.matsem.spacenews.shared.design.theme.SpaceNewsTheme
 import dev.matsem.spacenews.shared.design.tooling.Showcase
@@ -69,8 +70,9 @@ private fun Content(
     actions: ArticleDetailScreen.Actions,
     modifier: Modifier = Modifier,
 ) {
-    val hazeState = rememberHazeState()
     val uriHandler = LocalUriHandler.current
+    var bottomBarSize by remember { mutableStateOf(IntSize(0, 0)) }
+    val hazeState = rememberHazeState()
 
     Scaffold(
         topBar = {
@@ -101,6 +103,10 @@ private fun Content(
                         uriHandler.openUri(article.url)
                     },
                     modifier = Modifier.fillMaxWidth()
+                        .onSizeChanged { bottomBarSize = it }
+                        .hazeEffect(hazeState, HazeMaterials.ultraThin()) {
+                            progressive = HazeProgressive.verticalGradient()
+                        }
                         .padding(horizontal = SpaceNewsTheme.dimensions.horizontalContentPadding, vertical = Grid.d4)
                         .navigationBarsPadding(),
                 ) {
@@ -110,7 +116,8 @@ private fun Content(
         },
     ) {
         DefaultStateLayout(
-            modifier = modifier.background(SpaceNewsTheme.colorScheme.background),
+            modifier = modifier
+                .background(SpaceNewsTheme.colorScheme.background),
             loadingState = state.article,
             onRetryClick = actions::onRetryClick,
         ) { article ->
@@ -118,65 +125,27 @@ private fun Content(
                 Column(
                     Modifier
                         .fillMaxSize()
+                        .hazeSource(hazeState)
                         .verticalScroll(rememberScrollState()),
                 ) {
-                    // Header box
-                    Box {
-                        AsyncImage(
-                            model = article.imageUrl,
-                            contentDescription = null,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(this@BoxWithConstraints.maxHeight / 2.5f)
-                                .hazeSource(hazeState),
-                            contentScale = ContentScale.Crop,
-                        )
-                        Column(
-                            Modifier
-                                .fillMaxWidth()
-                                .align(Alignment.BottomStart)
-                                .hazeEffect(
-                                    state = hazeState,
-                                    style = HazeMaterials.ultraThick(),
-                                ) {
-                                    progressive = HazeProgressive.verticalGradient()
-                                }
-                                .background(
-                                    brush = Brush.verticalGradient(
-                                        0f to Color.Transparent,
-                                        0.8f to SpaceNewsTheme.colorScheme.background,
-                                        1f to SpaceNewsTheme.colorScheme.background,
-                                    ),
-                                ),
-                        ) {
-                            VerticalSpacer(Grid.d20)
-
-                            Text(
-                                text = article.title.localized(),
-                                style = SpaceNewsTheme.typography.headlineSmall.copy(fontWeight = FontWeight.SemiBold),
-                                color = SpaceNewsTheme.colorScheme.onSurface,
-                                modifier = Modifier.padding(horizontal = SpaceNewsTheme.dimensions.horizontalContentPadding),
-                            )
-
-                            Text(
-                                text = article.date.localized(),
-                                style = SpaceNewsTheme.typography.labelLarge,
-                                color = SpaceNewsTheme.colorScheme.onSurface,
-                                modifier = Modifier.padding(horizontal = SpaceNewsTheme.dimensions.horizontalContentPadding),
-                            )
-
-                            VerticalSpacer(Grid.d6)
-                        }
-                    }
+                    // Header
+                    ArticleDetailHeader(
+                        article = article,
+                        modifier = Modifier.height(this@BoxWithConstraints.maxHeight * 0.8f),
+                    )
 
                     // Content
                     Text(
                         text = article.summary,
                         modifier = Modifier
                             .padding(horizontal = SpaceNewsTheme.dimensions.horizontalContentPadding),
-                        style = SpaceNewsTheme.typography.bodyMedium,
+                        style = SpaceNewsTheme.typography.bodyLarge,
                         color = SpaceNewsTheme.colorScheme.onBackground,
                     )
+
+                    with(LocalDensity.current) {
+                        Spacer(Modifier.size(bottomBarSize.height.toDp()))
+                    }
                 }
             }
         }

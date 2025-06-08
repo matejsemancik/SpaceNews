@@ -4,7 +4,7 @@ import androidx.compose.ui.window.ComposeUIViewController
 import dev.matsem.spacenews.shared.design.theme.SpaceNewsTheme
 import dev.matsem.spacenews.shared.feature.articleDetail.presentation.ArticleDetailScreen
 
-fun ArticleDetailUiController(screen: ArticleDetailScreen) = ComposeUIViewController {
+fun ArticleDetailScreenUiController(screen: ArticleDetailScreen) = ComposeUIViewController {
     SpaceNewsTheme {
         ArticleDetailScreenUi(screen)
     }

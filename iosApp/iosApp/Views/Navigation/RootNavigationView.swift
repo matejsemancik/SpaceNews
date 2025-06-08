@@ -26,8 +26,9 @@ struct RootNavigationView: View {
                 HomeScreenView(instance.screen)
                     .ignoresSafeArea()
             case .articleDetail(let instance):
-                Text("ArticleDetail: \(instance.screen)")
-                    .navigationTitle("Detail")
+                ArticleDetailScreenView(instance.screen)
+                    .ignoresSafeArea()
+                    .navigationBarBackButtonHidden()
             }
         }
     }
