@@ -3,29 +3,26 @@ package dev.matsem.spacenews.shared.feature.home.ui
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.Text
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.chrisbanes.haze.hazeSource
+import dev.chrisbanes.haze.materials.ExperimentalHazeMaterialsApi
+import dev.chrisbanes.haze.rememberHazeState
 import dev.icerock.moko.resources.compose.stringResource
 import dev.matsem.spacenews.resources.MR
 import dev.matsem.spacenews.shared.data.repo.model.Article
 import dev.matsem.spacenews.shared.data.repo.model.mockPagedListState
-import dev.matsem.spacenews.shared.design.theme.Grid
 import dev.matsem.spacenews.shared.design.theme.SpaceNewsTheme
 import dev.matsem.spacenews.shared.design.tooling.Showcase
 import dev.matsem.spacenews.shared.feature.home.presentation.HomeScreen
@@ -43,6 +40,7 @@ fun HomeScreenUi(
     Content(state, actions, modifier)
 }
 
+@OptIn(ExperimentalHazeMaterialsApi::class)
 @Composable
 private fun Content(
     state: HomeState,
@@ -50,6 +48,8 @@ private fun Content(
     modifier: Modifier = Modifier,
 ) {
     val listState = rememberLazyListState()
+    val hazeState = rememberHazeState()
+
     LaunchedEffect(listState) {
         snapshotFlow { listState.layoutInfo }.collect { layoutInfo ->
             val totalItemsCount = layoutInfo.totalItemsCount
@@ -60,34 +60,28 @@ private fun Content(
         }
     }
 
-    LazyColumn(
-        modifier = modifier,
-        state = listState,
-    ) {
-        item {
-            Spacer(Modifier.statusBarsPadding())
-        }
-        item {
-            Column(Modifier.padding(horizontal = SpaceNewsTheme.dimensions.horizontalContentPadding, vertical = Grid.d2)) {
-                Text(
-                    text = stringResource(MR.strings.home_title),
-                    style = SpaceNewsTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
-                    color = SpaceNewsTheme.colorScheme.onBackground,
-                )
+    Scaffold(
+        topBar = {
+            HazeAppBar(text = stringResource(MR.strings.home_title), hazeState = hazeState)
+        },
+    ) { paddingValues ->
+        LazyColumn(
+            modifier = modifier
+                .background(SpaceNewsTheme.colorScheme.background)
+                .hazeSource(hazeState),
+            state = listState,
+            contentPadding = paddingValues,
+        ) {
+            items(state.articles) { article ->
+                ArticleListRow(article, Modifier.fillMaxWidth(), onClick = { actions.onArticleClick(id = article.id) })
             }
-        }
-        items(state.articles) { article ->
-            ArticleListRow(article, Modifier.fillMaxWidth(), onClick = { actions.onArticleClick(id = article.id) })
-        }
-        item {
-            AnimatedVisibility(visible = state.loadingFooter != null, enter = fadeIn(), exit = fadeOut()) {
-                state.loadingFooter?.let { footerItem ->
-                    LoadingFooterRow(footerItem, modifier = Modifier.fillMaxWidth(), onRetryClick = actions::onFooterRetryClick)
+            item {
+                AnimatedVisibility(visible = state.loadingFooter != null, enter = fadeIn(), exit = fadeOut()) {
+                    state.loadingFooter?.let { footerItem ->
+                        LoadingFooterRow(footerItem, modifier = Modifier.fillMaxWidth(), onRetryClick = actions::onFooterRetryClick)
+                    }
                 }
             }
-        }
-        item {
-            Spacer(Modifier.navigationBarsPadding())
         }
     }
 }

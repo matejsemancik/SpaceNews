@@ -91,6 +91,10 @@ kotlin {
             // MOKO
             implementation(libs.moko.resources)
             implementation(libs.moko.resources.compose)
+
+            // Haze
+            implementation(libs.haze.core)
+            implementation(libs.haze.materials)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

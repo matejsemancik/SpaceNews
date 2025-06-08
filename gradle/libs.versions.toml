@@ -18,6 +18,7 @@ composeMultiplatform = "1.8.1"
 dataStore = "1.1.7"
 decompose = "3.3.0"
 essenty = "2.5.0"
+haze = "1.6.4"
 junit = "4.13.2"
 koin = "4.1.0-RC1"
 kotlin = "2.1.21"
@@ -75,11 +76,15 @@ coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.re
 # Decompose
 decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-extensionsCompose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
-essenty = {  module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
+essenty = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
 
 # Moko
 moko-resources = { group = "dev.icerock.moko", name = "resources", version.ref = "moko-resources" }
-moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources"}
+moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
+
+# Haze
+haze-core = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
+haze-materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = "haze" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
