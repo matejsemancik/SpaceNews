@@ -35,7 +35,14 @@ internal interface ArticleRepo {
 
 internal class ArticleRepoImpl(private val apiManager: NewsApiManager) : ArticleRepo {
 
-    // In-memory cache is used to quickly query Article by its ID when user navigates to detail
+    /*
+    In-memory cache is used to quickly query Article by its ID when user navigates to detail.
+
+    There is no eviction strategy and will keep growing indefinitely for entire process lifecycle.
+    This can be addressed by:
+    - storing cache in disk Room database
+    - implementing eviction strategy
+    */
     private val inMemoryCache = mutableMapOf<ArticleId, ArticleResponse>()
 
     override fun fetchArticles(list: PagedListState<Article>): Flow<PagedListState<Article>> = flow {

@@ -5,13 +5,15 @@ import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.arkivanov.decompose.extensions.compose.stack.animation.LocalStackAnimationProvider
+
+// Returns dynamic color scheme on Android if supported
+@Composable
+expect fun getColorScheme(isDark: Boolean): ColorScheme
 
 @Composable
 fun SpaceNewsTheme(
@@ -20,11 +22,7 @@ fun SpaceNewsTheme(
     content: @Composable () -> Unit,
 ) {
     MaterialTheme(
-        colorScheme = if (isDark) {
-            darkColorScheme()
-        } else {
-            lightColorScheme()
-        },
+        colorScheme = getColorScheme(isDark),
     ) {
         CompositionLocalProvider(
             LocalSpaceNewsDimensions provides dimensions,
