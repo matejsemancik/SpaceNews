@@ -81,7 +81,7 @@ private fun Content(
 
     Scaffold(
         topBar = {
-            HazeAppBar(text = stringResource(MR.strings.home_title), hazeState = hazeState)
+            HomeAppBar(text = stringResource(MR.strings.home_title), hazeState = hazeState)
         },
     ) { paddingValues ->
         LazyColumn(

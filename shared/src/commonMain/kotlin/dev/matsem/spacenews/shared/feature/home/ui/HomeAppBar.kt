@@ -21,7 +21,7 @@ import dev.matsem.spacenews.shared.design.theme.SpaceNewsTheme
 
 @OptIn(ExperimentalHazeMaterialsApi::class)
 @Composable
-fun HazeAppBar(
+fun HomeAppBar(
     text: String,
     hazeState: HazeState,
     modifier: Modifier = Modifier,
